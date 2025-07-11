@@ -1,7 +1,7 @@
 {
     "name":"Estate Account",
     "version": "18.0.1.1.0",
-    "depends":["account", "real_state", "l10n_mx_edi"],
+    "depends":["account", "real_state", "l10n_mx_edi", "sale"],
     "application": True,
     "sequence": 1,
     "license": "LGPL-3",
