@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@id='informations']" position="inside">
+            <div class="col" t-if="o.property_id">
+                <strong>Porperty Name</strong>
+                <div t-field="o.property_id.name"></div>
+            </div>
+        </xpath>
+        <xpath expr="//th[@name='th_description']" position="after">
+            <th name="th_description2" class="text-start"><span>Description 2</span></th>
+        </xpath>
+        <xpath expr="//td[@name='account_invoice_line_name']" position="after">
+            <td name="account_invoice_line_name">
+                <span t-if="line.name" t-out="line.name+' '+o.property_id.name" ></span>
+            </td>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="l10n_mx_edi_real_state" model="l10n_mx_edi.addenda">
+        <field name="name">Real State</field>
+        <field name="arch" type="xml">
+            <t>
+                <ADDENDAREALSTATE
+                    xmlns:cfdi="http://www.sat.gob.mx/cfd/3"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    
+                >
+                    <Etiqueta1>
+                        <nombre t-out="record.name"/>
+                        <propiedad>
+                            <nombre t-out="record.property_id.name"/>
+                            <descripcion t-out="record.property_id.description"/>
+                            <precio t-out="record.property_id.selling_price" t-att-precio2="record.property_id.expected_price"/>
+                            <t t-if="record.property_id.selling_price > 5000">
+                                <precioalto>SI</precioalto>
+                            </t>
+                            <t t-else="">
+                                <precioalto>NO</precioalto>
+                            </t>
+                            <t>
+                                <Ofertas>
+                                    <t t-foreach="record.property_id.offer_ids" t-as="oferta">
+                                        <oferta t-att-nombre="oferta.partner_id.name" t-att-precio="oferta.price"/>
+                                    </t>
+                                </Ofertas>
+                            </t>
+                        </propiedad>
+                    </Etiqueta1>
+                    <Etiquet2 t-att-nombre="record.property_id.name" t-att-descripcion="record.property_id.description" t-att-precio="record.property_id.selling_price"/>
+                </ADDENDAREALSTATE>
+            </t>
+        </field>
+    </record>
+</odoo>

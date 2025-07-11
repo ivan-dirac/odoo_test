@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@id='informations']" position="inside">
+            <div t-if="doc.user_id.email" class="col">
+                <strong>Email</strong>
+                <div t-field="doc.user_id.email"></div>
+            </div>
+        </xpath>
+        <xpath expr="//th[@name='th_description']" position="after">
+            <th name="th_description2" class="text-start"><span>Description 2</span></th>
+        </xpath>
+        <xpath expr="//td[@name='td_name']" position="after">
+            <td name="td_name2"><span t-out="line.name+' TEST'"></span></td>
+        </xpath>
+    </template>
+</odoo>
